@@ -1,6 +1,8 @@
 #ifndef __PROCQUEUE_H__
 #define __PROCQUEUE_H__
 
+#include <stdint.h>
+
 #define LATOR 101
 
 typedef struct queue {

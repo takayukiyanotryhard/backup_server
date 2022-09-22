@@ -1,19 +1,19 @@
 #include <stdio.h>
 
-#include "server.h"
-#include "log.h"
+#include "backup.h"
 #include "config.h"
-#include "thread_pool.h"
+#include "log.h"
 #include "polling.h"
 #include "procqueue.h"
-#include "backup.h"
+#include "server.h"
+#include "thread_pool.h"
 
-int main(void){
+int main(void) {
     int result;
 
     log_initialize();
 
-    config_t* config = load_config();
+    config_t *config = load_config();
     if (!config) return -1;
 
     // スレッドプールを生成
@@ -23,11 +23,11 @@ int main(void){
     // ポーリングスレッドの起動
     launch_polling(config);
 
-    for(;;){
+    for (;;) {
         // キューの取り出し
-        queue_t* queue = pop();
+        queue_t *queue = pop();
         result = backup(config, queue);
-        if (result == LATOR){
+        if (result == LATOR) {
             push(queue);
         }
     }

@@ -1,3 +1,4 @@
-int backup(config_t*, queue_t*) {
-    return 0;
+#include "backup.h"
+int backup(config_t *config, queue_t *queue) {
+	return 0;
 }

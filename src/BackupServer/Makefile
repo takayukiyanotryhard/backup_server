@@ -1,3 +1,5 @@
+### Makefile ###
+
 CC  	= /usr/local/bin/gcc-9
 CFLAGS	= -g -Wall -O2
 LDFLAGS = 
@@ -13,7 +15,7 @@ prepare:
 	mkdir -p ./out/objs 
 
 server: $(OBJS)
-	$(CC) -o $(ODIR)/$(EXE) $@
+	$(CC) $(LDFLAGS) $(LIBS) -o $(ODIR)/../$(EXE) $^
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
