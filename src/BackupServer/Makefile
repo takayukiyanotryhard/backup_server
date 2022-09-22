@@ -1,7 +1,7 @@
 ### Makefile ###
 
 CC  	= /usr/local/bin/gcc-9
-CFLAGS	= -g -Wall -O2
+CFLAGS	= -g -Wall -O2 -v
 LDFLAGS = 
 LIBS 	=
 ODIR	= ./out/objs
