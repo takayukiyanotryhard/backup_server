@@ -1,0 +1,33 @@
+digraph G {
+    graph [
+        charset = "UTF-8";
+//    layout = circo
+//    layout = dot
+//    layout = fdp
+//    layout = neato
+//    layout = osage
+//    layout = sfdp
+//    layout = twopi
+        arrowhead=none;
+        label = "Backup Server";
+        labelloc = t;
+    ];
+
+    start_up -> main
+
+    main -> polling[dir="both"]
+    polling -> polling
+
+    main -> config
+    main-> main
+
+    main-> thread_pool
+
+    main-> backup[label="launch thread"]
+    polling -> UE
+    backup -> libimobiledevice[dir="both"]
+    libimobiledevice -> UE [dir="both"]
+    backup -> sqldb
+    backup -> storedb
+    backup -> file
+}

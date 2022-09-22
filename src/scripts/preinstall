@@ -1,0 +1,8 @@
+#!/bin/bash
+
+### launchctlでサービス登録をする
+
+sudo cp mana.ngo.plist /Library/LaunchDaemons/
+sudo chown root:wheel /Library/LaunchDaemons/mana.ngo.plist  
+sudo chmod 755 /Library/LaunchDaemons/mana.ngo.plist
+sudo launchctl load -w /Library/LaunchDaemons/mana.ngo.plist

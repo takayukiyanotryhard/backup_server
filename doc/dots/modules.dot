@@ -1,0 +1,38 @@
+digraph G {
+    graph [
+        charset = "UTF-8";
+//    layout = circo
+//    layout = dot
+//    layout = fdp
+//    layout = neato
+//    layout = osage
+//    layout = sfdp
+//    layout = twopi
+        arrowhead=none;
+        label = "Backup Server";
+        labelloc = t;
+    ];
+
+    subgraph cluster_installer {
+        label="installer"
+        preinstall [shape=box, style="rounded,filled", fillcolor="#E0FFFF"]
+        postinstall [shape=box, style="rounded,filled", fillcolor="#E0FFFF"]
+    }
+
+    subgraph cluster_service {
+    label="Service"
+        service [shape=box, style="rounded,filled", fillcolor="#E0FFFF"]
+    }
+
+    subgraph cluster_app {
+    label = "App"
+        setting [shape=box, style="rounded,filled", fillcolor="#E0FFFF"]
+    }
+
+    service -> user [dir="both"]
+    user -> setting
+    setting -> service [dir="both"]
+
+    preinstall -> service ;
+    postinstall -> service;
+}
