@@ -17,7 +17,7 @@ int main(void) {
     if (!config) return -1;
 
     // スレッドプールを生成
-    result = make_thread(config);
+    result = make_thread(config->threads_num);
     if (!result) return -1;
 
     // ポーリングスレッドの起動
