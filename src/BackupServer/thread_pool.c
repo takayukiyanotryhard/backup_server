@@ -52,7 +52,7 @@ struct thr_pool {
     active_t *pool_active;      /* list of threads performing work */
     job_t *pool_head;           /* head of FIFO job queue */
     job_t *pool_tail;           /* tail of FIFO job queue */
-	pthread_t th;				/*  */
+    pthread_t th;               /*  */
     pthread_attr_t pool_attr;   /* attributes of the workers */
     int pool_flags;             /* see below */
     uint32_t pool_linger;       /* seconds before idle workers exit */
@@ -95,7 +95,7 @@ int make_thread(int num) {
     log("cpu:%d", cpu);
 
     g_thread_pool = thr_pool_create(10, 20, 1, 0);
-	log("g_thread_pool:%p\n", g_thread_pool);
+    log("g_thread_pool:%p\n", g_thread_pool);
     int result = create_worker(g_thread_pool);
     log("result:%d", result);
     return result;
