@@ -18,10 +18,13 @@ int main(void) {
 
     // スレッドプールを生成
     result = make_thread(config->threads_num);
-    if (!result) return -1;
+    if (result != OK) return -1;
 
     // ポーリングスレッドの起動
     launch_polling(config);
+
+    // 設定変更受付スレッドの起動
+    launch_setting_receptor();
 
     for (;;) {
         // キューの取り出し
