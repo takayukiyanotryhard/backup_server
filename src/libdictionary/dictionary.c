@@ -82,22 +82,24 @@ char *dict_search(dict_t* d, char* key) {
         return er->data;
     }
 }
-char *dict_get_data(dict_t* d, int i, char** key) {
+char *dict_get_data(dict_t* d, int index, char** key) {
     struct hsearch_data* tab = d->dict;
     ent_t* table = (ent_t*)tab->table;
     ENTRY *entry;
-    i++;
-    int check = 0;
-    printf("tab:%p\n",tab);
-    for (int j=0;j<tab->size;i++) {
-        if (table[j].entry.data) {
-            check++;
-            if (check == i) {   
-                *key = table[j].entry.key;
-                return table[j].entry.data;
+    int check = index + 1;
+    int j = 0;
+    for (int i=0;i<tab->size;i++) {
+        if (table[i].entry.data) {
+            // printf("check:%d i:%d j:%d index:%d\n", check, i, j, index);
+            j++;
+            if (check == j) {   
+                *key = table[i].entry.key;
+                return table[i].entry.data;
             }
         }
     }
+    
+    printf("loop exit\n");
     return 0;
 }
 

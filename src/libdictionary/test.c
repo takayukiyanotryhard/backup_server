@@ -16,6 +16,8 @@ int main(void) {
 
     dict_add_data(dict, "c", "cba");
     dict_add_data(dict, "b", "bba");
+    dict_add_data(dict, "a", "abc");
+    dict_add_data(dict, "b", "bba");
 
     char *key;
     data = dict_get_data(dict, 1, &key);

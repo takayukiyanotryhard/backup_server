@@ -1,7 +1,6 @@
 CC = /usr/local/bin/gcc-9
 AR = /usr/local/bin/gcc-ar-9
-#CFLAGS = -g
-CFLAGS = 
+CFLAGS = -g
 LDFLAGS = -L.
 LIBS = -ldictionary
 

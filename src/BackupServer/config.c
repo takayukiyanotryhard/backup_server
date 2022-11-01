@@ -12,6 +12,10 @@ struct hsearch_data* g_os = 0;
 
 dict_t* g_hash = 0;
 void load_os() {
+    char *key;
+    char *data;
+
+    char *pname, *ver, *build;
     xml_t *xml = xml_new(SFILE, NULL);
     if (!xml) {
         printf("xml load failed.\n");
@@ -31,7 +35,7 @@ void load_os() {
 
     int count = dict->child_count("key", dict);
     g_hash = new_dict(10);
-    printf("found %d values\n", count);
+    // printf("found %d values\n", count);
     for(int i=0;i<count;i++){
 //        printf("%s\n", dict->child("key", i, dict)->value);
 //        printf("%s\n", dict->child("string", i, dict)->value);
@@ -39,16 +43,18 @@ void load_os() {
     }
 
     count = dict_data_count(g_hash);
-    printf("data:%d\n", count);
     for(int i=0;i<count;i++) {
-        char *key;
-        char *data = dict_get_data(g_hash, i, &key);
+        data = dict_get_data(g_hash, i, &key);
         if (data)
-        printf("%d v:%s\n", i, data);
+            // printf("%d k:%s v:%s\n", i, key, data);
+            ;
         else
-        printf("error\n");
+            printf("error\n");
     }
-
+    pname = dict_search(g_hash, "ProductName");
+    ver = dict_search(g_hash, "ProductVersion");
+    build = dict_search(g_hash, "ProductBuildVersion");
+    log("%s %s build:%s", pname, ver, build);
 ERROR:
     xml_free(xml);
     
