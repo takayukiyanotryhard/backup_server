@@ -1,9 +1,10 @@
 ### Makefile ###
 
 CC  	= /usr/local/bin/gcc-9
-CFLAGS	= -g -Wall -O2 -v
-LDFLAGS = 
-LIBS 	=
+#CFLAGS	= -g -Wall -O2 -v
+CFLAGS	= -g -Wall -O2
+LDFLAGS = -L../libcxml -L../libdictionary
+LIBS 	= -lcxml -lstdc++ -ldictionary
 ODIR	= ./out/objs
 EXE 	= server
 SRCS	= $(wildcard *.c)
@@ -15,7 +16,7 @@ prepare:
 	mkdir -p ./out/objs 
 
 server: $(OBJS)
-	$(CC) $(LDFLAGS) $(LIBS) -o $(ODIR)/../$(EXE) $^
+	$(CC) -o $(ODIR)/../$(EXE) $(LDFLAGS) $(LIBS) $^
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
