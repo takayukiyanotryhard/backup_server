@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <pkg-ref id="backup_server.plist"/>
+    <options customize="never" require-scripts="false" hostArchitectures="x86_64,arm64"/>
+    <choices-outline>
+        <line choice="default">
+            <line choice="backup_server.plist"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="backup_server.plist" visible="false">
+        <pkg-ref id="backup_server.plist"/>
+    </choice>
+    <pkg-ref id="backup_server.plist" version="1.0.0" onConclusion="none">App.pkg</pkg-ref>
+</installer-gui-script>
