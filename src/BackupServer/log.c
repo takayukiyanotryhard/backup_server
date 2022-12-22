@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "log.h"
 
-const char LOG_FILE[]="/tmp/log.log";
-FILE* g_log_fp;
+const char LOG_FILE[]="/tmp/backup_server.log";
+FILE* g_log_fp = 0;
 char g_log_buf[FILENAME_MAX];
 
 void log_initialize() {
